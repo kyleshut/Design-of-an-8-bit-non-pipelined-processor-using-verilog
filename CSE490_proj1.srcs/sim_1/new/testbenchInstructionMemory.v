@@ -21,27 +21,36 @@
 
 
 module testbenchInstructionMemory();
-reg clock;
 reg [7:0] address;
 wire [7:0] instruction;
 reg [7:0] memory [0:254];
-instructionMemory UUT(.clock(clock),.address(address),.instruction(instruction));
-always #5 clock=~clock;
+instructionMemory UUT(.address(address),.instruction(instruction));
+
 
 initial
 begin
-clock = 0;
-address = 8'b00000000;
 memory[0] = 8'b00001000;
 memory[1] = 8'b00101000;
 memory[2] = 8'b01000000;
 memory[3] = 8'b01100000;
 memory[4] = 8'b10001000;
 memory[5] = 8'b10110000;
+address = 8'b00000000;
+#5
+address<=address + 8'b00000001;
+#5
+address<=address + 8'b00000001;
+#5
+address<=address + 8'b00000001;
+#5
+address<=address + 8'b00000001;
+#5
+address<=address + 8'b00000001;
 end
 
-always@(posedge clock)
+/*always@(posedge clock)
 begin
 address<=address + 8'b00000001;
 end
+*/
 endmodule

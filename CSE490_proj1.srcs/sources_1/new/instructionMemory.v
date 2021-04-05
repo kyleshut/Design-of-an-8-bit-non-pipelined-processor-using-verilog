@@ -20,8 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module instructionMemory(clock, address, instruction);
-input clock; 
+module instructionMemory(address, instruction);
 input [7:0] address;
 output reg [7:0] instruction;
 reg [7:0] memory [0:254];
@@ -35,7 +34,12 @@ memory[4] = 8'b10001000;
 memory[5] = 8'b10110000;
 end
 
-always@(posedge clock)
+/*always@(posedge clock)
+begin
+instruction <= memory[address];
+end*/
+
+always@(*)
 begin
 instruction <= memory[address];
 end

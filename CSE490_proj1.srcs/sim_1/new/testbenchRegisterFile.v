@@ -30,7 +30,6 @@ wire [7:0] read_data1;
 wire [7:0] read_data2;
 reg [7:0] registers [0:1];
 registerFile UUT(.clock(clock),.read_reg1(read_reg1), .read_reg2(read_reg2), .write_reg(write_reg), .write_data(write_data), .read_data1(read_data1), .read_data2(read_data2));
-/*always #5 clock=~clock;*/
 initial
 begin 
 clock = 0;  

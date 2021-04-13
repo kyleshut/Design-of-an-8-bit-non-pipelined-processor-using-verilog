@@ -29,10 +29,16 @@ module ALU (input [7:0] reg1,
     always @(reg1 or reg2 or ALUControl)
 		begin
 			casex (ALUControl)
-				'b0011:  
-					result = reg1 + reg2;
-				'b0101:  
-					result = reg1 - reg2;
+				3'b011: result = reg1 + reg2;
+				3'b100: result = reg1 + reg2;
+				3'b101: result = reg1 - reg2;
 			endcase
 		end
+endmodule
+
+module JR( input[1:0] ALUControl, 
+       input [3:0] funct,
+       output JRControl
+    );
+assign JRControl = ({ALUControl,funct}==3'b010) ? 1'b1 : 1'b0;
 endmodule

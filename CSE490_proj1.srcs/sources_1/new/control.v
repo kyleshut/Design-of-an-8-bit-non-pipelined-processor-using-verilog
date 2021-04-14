@@ -19,11 +19,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module control(opcode,regDst, regWrite, aluOp, aluSrc, memToReg, memRead, memWrite, jump);
+module control(opcode, aluSrc, memToReg, memRead, memWrite, jump);
 input [2:0] opcode;
-output reg regDst;
-output reg regWrite;
-output reg [2:0] aluOp;
 output reg aluSrc;
 output reg memToReg;
 output reg memRead;
@@ -34,9 +31,6 @@ begin
 case (opcode)
 3'b000:
     begin
-    regDst = 0;
-    regWrite = 0;
-    aluOp = 3'b000;
     aluSrc = 1;
     memToReg = 1; 
     memRead = 1;
@@ -45,9 +39,6 @@ case (opcode)
     end
 3'b001:
     begin
-    regDst = 0;
-    regWrite = 0;
-    aluOp = 3'b001;
     aluSrc = 1;
     memToReg = 0; 
     memRead = 0;
@@ -56,9 +47,6 @@ case (opcode)
     end
 3'b010:
     begin
-    regDst = 0;
-    regWrite = 0;
-    aluOp = 3'b010;
     aluSrc = 0;
     memToReg = 0; 
     memRead = 0;
@@ -67,9 +55,7 @@ case (opcode)
     end
 3'b011:
     begin
-    regDst = 1;
-    regWrite = 1;
-    aluOp = 3'b011;
+
     aluSrc = 0;
     memToReg = 0; 
     memRead = 0;
@@ -79,9 +65,6 @@ case (opcode)
     
 3'b100:
     begin
-    regDst = 0;
-    regWrite = 1;
-    aluOp = 3'b100;
     aluSrc = 1;
     memToReg = 0; 
     memRead = 0;
@@ -91,9 +74,6 @@ case (opcode)
     
 3'b101:
     begin
-    regDst = 1;
-    regWrite = 1;
-    aluOp = 3'b101;
     aluSrc = 0;
     memToReg = 0; 
     memRead = 0;

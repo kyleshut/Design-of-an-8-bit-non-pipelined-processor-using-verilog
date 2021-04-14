@@ -22,15 +22,12 @@
 
 module testbenchControl();
 reg [2:0] opcode;
-wire regDst;
-wire regWrite;
-wire [2:0] aluOp;
 wire aluSrc;
 wire memToReg;
 wire memRead;
 wire memWrite;
 wire jump;
-control UUT(.opcode(opcode), .regDst(regDst), .regWrite(regWrite), .aluOp(aluOp), .aluSrc(aluSrc), .memToReg(memToReg), .memRead(memRead), .memWrite(memWrite), .jump(jump)); 
+control UUT(.opcode(opcode), .aluSrc(aluSrc), .memToReg(memToReg), .memRead(memRead), .memWrite(memWrite), .jump(jump)); 
 initial
 begin 
 opcode <= 3'b000;

@@ -21,10 +21,10 @@
 
 
 
-module signext( input  [4:0] a,
+module signext( input  [2:0] a,
                 output [7:0] y 
                 );
 
-    assign y = { {3{a[4]}} , a };
-    
+    assign y = { {5{a[2]}} , a[2:0]};
+
 endmodule

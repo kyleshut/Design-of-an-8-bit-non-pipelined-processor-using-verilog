@@ -20,9 +20,11 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module dataMemory(clock, address, writeData, dataOut);
+module dataMemory(clock,memReadSignal, memWriteSignal, address, writeData, dataOut);
 
 input clock; 
+input memReadSignal;
+input memWriteSignal; 
 input [7:0] address;
 input [7:0] writeData;
 output [7:0] dataOut; 
@@ -30,8 +32,11 @@ reg [7:0] dataMemory [0:255];
 
 always@(posedge clock)
 begin
+if(memWriteSignal)
+begin
  dataMemory[address] <= writeData;
+ end
 end
 
-assign  dataOut = dataMemory[address];
+assign  dataOut = memReadSignal ? dataMemory[address] : 7'bx;
 endmodule

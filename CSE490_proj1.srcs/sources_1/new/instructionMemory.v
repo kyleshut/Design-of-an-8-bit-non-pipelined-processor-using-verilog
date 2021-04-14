@@ -26,12 +26,17 @@ output reg [7:0] instruction;
 reg [7:0] memory [0:254];
 initial
 begin
-memory[0] = 8'b00001000;
-memory[1] = 8'b00101000;
-memory[2] = 8'b01000000;
-memory[3] = 8'b01100000;
-memory[4] = 8'b10001000;
-memory[5] = 8'b10110000;
+/*
+memory[0] = 8'b10000010;
+memory[1] = 8'b01100000;
+memory[2] = 8'b10110000;
+memory[3] = 8'b01111000;*/
+
+memory[0] = 8'b00110000;
+memory[1] = 8'b00000000;
+memory[2] = 8'b01100000;
+
+//memory[5] = 8'b01100000;
 end
 
 /*always@(posedge clock)
@@ -43,6 +48,5 @@ always@(*)
 begin
 instruction <= memory[address];
 end
-
 
 endmodule

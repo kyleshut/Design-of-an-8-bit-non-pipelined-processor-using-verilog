@@ -22,21 +22,23 @@
 
 
 module testsub();
-reg in1, in2;
-wire out;
+  
+  reg [7:0] IN1,IN2;
+  wire [7:0] RES;
+  wire CO;
+  
+  subtr test_sub(.A(IN1),.B(IN2),.RES(RES),.CO(CO));
+  
+  initial begin
+    
+    IN1 = 8'd0; IN2 = 8'd0;
 
-subtr test_sub(.A(in1),.B(in2), .RES(out));
+#50 IN1 = 8'd0;   IN2 = 8'd1;  
+#50 IN1 = 8'd5;   IN2 = 8'd2;
+#50 IN1 = 8'd7;   IN2 = 8'd4;
+#50 IN1 = 8'd10;   IN2 = 8'd8;
 
-initial begin
-in1 = 0;
-in2 = 0;
-#5
-in1 = 1;
-in2 = 0;
-#5;
-in1 = 1;
-in2 = 1;
-#5;
 end
-endmodule
 
+
+endmodule

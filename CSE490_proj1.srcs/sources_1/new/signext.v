@@ -21,10 +21,9 @@
 
 
 
-module signext( input  [2:0] a,
-                output [7:0] y 
-                );
+module signext(in, out);
+  input [2:0] in;
+  output [7:0] out;
 
-    assign y = { {5{a[2]}} , a[2:0]};
-
+  assign out = {{5{in[2]}},in};
 endmodule

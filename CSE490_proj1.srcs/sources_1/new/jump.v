@@ -20,10 +20,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module jump(input[1:0] ALUControl, 
-       input [3:0] funct,
-       output JRControl
-    );
-assign JRControl = ({ALUControl,funct}==3'b010) ? 1'b1 : 1'b0;
+module jump(input[7:0] inp, 
+        output [7:0] address );
+       
+       wire [4:0] temp;
+
+assign temp = inp[4:0];
+assign address = {{3{temp[4]}},temp};
+
 endmodule
 

@@ -34,7 +34,7 @@ case (opcode)
     aluSrc = 1;
     memToReg = 1; 
     memRead = 1;
-    memWrite = 1; 
+    memWrite = 0; 
     jump = 0; 
     end
 3'b001:

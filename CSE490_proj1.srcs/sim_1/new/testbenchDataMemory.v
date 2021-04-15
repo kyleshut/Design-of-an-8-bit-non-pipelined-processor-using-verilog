@@ -26,10 +26,13 @@ reg [7:0] address;
 reg [7:0] writeData;
 wire [7:0] dataOut;
 reg [7:0] dataMemory [0:255];
-dataMemory UUT(.clock(clock),.address(address), .writeData(writeData), .dataOut(dataOut));
+reg memReadSignal, memWriteSignal;
+dataMemory UUT(.clock(clock),.memReadSignal(memReadSignal), .memWriteSignal(memWriteSignal), .address(address), .writeData(writeData), .dataOut(dataOut));
 initial
 begin 
 clock = 0;  
+memReadSignal = 0;
+memWriteSignal = 1;
 dataMemory[0] = 8'b00001000;
 dataMemory[1] = 8'b00001001;
 dataMemory[2] = 8'b00000001;

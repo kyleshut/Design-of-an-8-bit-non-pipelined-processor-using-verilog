@@ -19,11 +19,14 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module adder(A, B, SUM);  
+module adder(A, B, SUM, CO);  
 input  [7:0] A;  
 input  [7:0] B;  
-output [7:0] SUM; 
+output [7:0] SUM;  
+output CO;  
+wire [8:0] tmp; 
  
-  assign SUM = A + B;  
+  assign tmp = A + B;  
+  assign SUM = tmp [7:0];  
+  assign CO  = tmp [8];  
 endmodule 
-
